@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema(
     identification_number : {
       type: String,
       required: true,
+      unique:true,
     },
     name: {
       type: String,
