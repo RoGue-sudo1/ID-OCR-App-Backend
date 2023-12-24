@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 // Import the image controller module that handles image-related operations
-const imageController = require("../controllers/imageController");
+const imageController = require("../controllers/imageControler");
 
 // Define a route for handling POST requests to the root endpoint ("/")
 router.post("/", imageController.getImage);
