@@ -84,7 +84,7 @@ module.exports.getImage = async (req, res) => {
       await existingData.save();
       return res
         .status(200)
-        .json({ message: "User creation succesfull", user: formattedData });
+        .json({ message: "User creation successfull", user: formattedData });
     }
     const user = await User.create(formattedData);
     return res

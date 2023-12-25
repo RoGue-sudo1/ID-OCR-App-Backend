@@ -1,21 +1,22 @@
 // Import required modules
-// const fileupload = require("express-fileupload"); 
+// const fileupload = require("express-fileupload");
 
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose")
-const fb = require("./config/mongoose")
-require('dotenv').config()
+const mongoose = require("mongoose");
+const fb = require("./config/mongoose");
+require("dotenv").config();
 
 // Create an instance of the Express application
 const app = express();
 
+
 // Enable Cross-Origin Resource Sharing (CORS) middleware
 app.use(
-    cors({
-      origin: ["http://localhost:3000"], // Whitelist allowed origins
-      methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"], // Specify allowed HTTP methods
-    })
+  cors({
+    origin: [`${process.env.FRONT_END_SERVER_1}`], // Whitelist allowed origins
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"], // Specify allowed HTTP methods
+  })
 );
 
 // Parse incoming JSON requests
