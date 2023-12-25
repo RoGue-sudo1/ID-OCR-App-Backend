@@ -10,5 +10,8 @@ router.post("/", imageController.getImage);
 
 router.get("/",imageController.getData)
 
+router.delete("/",imageController.deleteData)
+
+router.put("/",imageController.editData)
 // Export the router to make it available for use in other parts of the application
 module.exports = router;

@@ -1,9 +1,11 @@
 // Import required modules
 // const fileupload = require("express-fileupload"); 
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose")
 const fb = require("./config/mongoose")
+require('dotenv').config()
 
 // Create an instance of the Express application
 const app = express();

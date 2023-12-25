@@ -76,23 +76,67 @@ module.exports.getImage = async (req, res) => {
       date_of_issue: dateOfIssue,
       date_of_expiry: dateOfExpiry,
     };
-
+    const existingData = await User.findOne({
+      identification_number: numericalIdNumber,
+    });
+    if (existingData && existingData.isActive === false) {
+      existingData.isActive = true;
+      await existingData.save();
+      return res
+        .status(200)
+        .json({ message: "User creation succesfull", user: formattedData });
+    }
     const user = await User.create(formattedData);
-    return res.status(200).json({ message:"User creation succesfull" });
+    return res
+      .status(200)
+      .json({ message: "User creation succesfull", user: formattedData });
   } catch (error) {
     console.log(error);
-
     return res.status(400).json({ message: "Provide a valid card" });
   }
 };
 
-module.exports.getData = async (req,res)=>{
+module.exports.getData = async (req, res) => {
   try {
-    const data = await User.find({})
-    console.log(data)
-    return res.status(200).json({data:data,message:"Data fetched succesfully"})
+    const data = await User.find({});
+
+    return res
+      .status(200)
+      .json({ data: data, message: "Data fetched succesfully" });
   } catch (error) {
-    console.log(error.message)
-    return res.status(400).json({message:"Error occured"})
+    return res.status(400).json({ message: "Error occured" });
   }
-}
+};
+
+module.exports.deleteData = async (req, res) => {
+  try {
+    const id = req.query.id;
+    const user = await User.findById(id);
+    user.isActive = false;
+    await user.save();
+    return res.status(200).json({ message: "User succesfully deleted" });
+  } catch (error) {
+    console.log(error)
+    return res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports.editData = async (req, res) => {
+  try {
+    const data = req.body;
+    const user = await User.findOne({
+      _id: data._id,
+    });
+    user.identification_number = data.identification_number;
+    user.name = data.name;
+    user.last_name = data.last_name;
+    user.date_of_birth = data.date_of_birth;
+    user.date_of_expiry = data.date_of_expiry;
+    user.date_of_issue = data.date_of_issue;
+    await user.save();
+    return res.status(200).json({ message: "User details succesfully edited" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "Error occured" });
+  }
+};

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-// require("dotenv").config();
+require("dotenv").config();
 mongoose.connect(
-  "mongodb+srv://harshrathore98626:dVxHLwvRBG6HlHEg@cluster0.uadil61.mongodb.net/?retryWrites=true&w=majority"
+  `mongodb+srv://harshrathore98626:${process.env.MONGOOSE_PASSWORD}@cluster0.uadil61.mongodb.net/?retryWrites=true&w=majority`
 );
 
 const db = mongoose.connection;
