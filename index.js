@@ -12,13 +12,13 @@ const app = express();
 
 
 // Enable Cross-Origin Resource Sharing (CORS) middleware
-app.use(
-  cors({
-    origin: [" https://thai-id-ocr.netlify.app " ], // Whitelist allowed origins
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"], // Specify allowed HTTP methods
-  })
-);
-
+// app.use(
+//   cors({
+//     origin: [" https://thai-id-ocr.netlify.app " ], // Whitelist allowed origins
+//     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"], // Specify allowed HTTP methods
+//   })
+// );
+app.use(cors())
 // Parse incoming JSON requests
 app.use(express.json());
 
