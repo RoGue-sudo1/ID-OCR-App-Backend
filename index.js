@@ -14,7 +14,7 @@ const app = express();
 // Enable Cross-Origin Resource Sharing (CORS) middleware
 app.use(
   cors({
-    origin: [`${process.env.FRONT_END_SERVER}`], // Whitelist allowed origins
+    origin: ["https://thai-id-ocr.netlify.app"], // Whitelist allowed origins
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"], // Specify allowed HTTP methods
   })
 );
