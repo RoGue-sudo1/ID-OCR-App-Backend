@@ -11,10 +11,10 @@ require("dotenv").config();
 const app = express();
 
 
-// Enable Cross-Origin Resource Sharing (CORS) middleware
+// Enable Cross-Origin Resource Sharing (CORS) middleware https://thai-id-ocr.netlify.app 
 app.use(
   cors({
-    origin: ["https://thai-id-ocr.netlify.app" ], // Whitelist allowed origins
+    origin: ["http://localhost:3000" ], // Whitelist allowed origins
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"], // Specify allowed HTTP methods
   })
 );
